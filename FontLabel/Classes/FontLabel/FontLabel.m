@@ -122,6 +122,14 @@
 	}
 }
 
+- (CGFloat)lineSpacing {
+	return self.zFont.lineSpacing;
+}
+
+- (void)setLineSpacing:(CGFloat)lineSpacing {
+	self.zFont.lineSpacing = lineSpacing;
+}
+
 - (void)setZAttributedText:(ZAttributedString *)attStr {
 	if (zAttributedText != attStr) {
 		[zAttributedText release];

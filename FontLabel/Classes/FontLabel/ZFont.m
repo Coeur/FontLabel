@@ -27,7 +27,7 @@
 @end
 
 @implementation ZFont
-@synthesize cgFont=_cgFont, pointSize=_pointSize, ratio=_ratio;
+@synthesize cgFont=_cgFont, pointSize=_pointSize, lineSpacing=_lineSpacing, ratio=_ratio;
 
 + (ZFont *)fontWithCGFont:(CGFontRef)cgFont size:(CGFloat)fontSize {
 	return [[[self alloc] initWithCGFont:cgFont size:fontSize] autorelease];
@@ -56,11 +56,11 @@
 }
 
 - (CGFloat)ascender {
-	return ceilf(self.ratio * CGFontGetAscent(self.cgFont));
+	return ceilf(self.ratio * CGFontGetAscent(self.cgFont) + (self.lineSpacing / 2));
 }
 
 - (CGFloat)descender {
-	return floorf(self.ratio * CGFontGetDescent(self.cgFont));
+	return floorf(self.ratio * CGFontGetDescent(self.cgFont) - (self.lineSpacing / 2));
 }
 
 - (CGFloat)leading {

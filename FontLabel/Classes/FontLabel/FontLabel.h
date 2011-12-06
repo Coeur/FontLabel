@@ -32,6 +32,7 @@
 }
 @property (nonatomic, setter=setCGFont:) CGFontRef cgFont __AVAILABILITY_INTERNAL_DEPRECATED;
 @property (nonatomic, assign) CGFloat pointSize __AVAILABILITY_INTERNAL_DEPRECATED;
+@property (nonatomic, assign) CGFloat lineSpacing;
 @property (nonatomic, retain, setter=setZFont:) ZFont *zFont;
 // if attributedText is nil, fall back on using the inherited UILabel properties
 // if attributedText is non-nil, the font/text/textColor

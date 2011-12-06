@@ -29,7 +29,7 @@
 @end
 
 @implementation FontLabel
-@synthesize zFont;
+@synthesize zFont, lineSpacing;
 @synthesize zAttributedText;
 
 + (id)labelWithLabel:(UILabel *)label
@@ -122,12 +122,14 @@
 	}
 }
 
-- (CGFloat)lineSpacing {
-	return self.zFont.lineSpacing;
+- (void)setZFont:(ZFont *)font {
+	self->zFont = [font retain];
+	self->zFont.lineSpacing = self.lineSpacing;
 }
 
-- (void)setLineSpacing:(CGFloat)lineSpacing {
-	self.zFont.lineSpacing = lineSpacing;
+- (void)setLineSpacing:(NSInteger)ls {
+	self->lineSpacing = ls;
+	self->zFont.lineSpacing = self.lineSpacing;
 }
 
 - (void)setZAttributedText:(ZAttributedString *)attStr {

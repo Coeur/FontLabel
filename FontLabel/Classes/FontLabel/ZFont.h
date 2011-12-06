@@ -25,6 +25,7 @@
 @interface ZFont : NSObject {
 	CGFontRef _cgFont;
 	CGFloat _pointSize;
+	CGFloat _lineSpacing;	
 	CGFloat _ratio;
 	NSString *_familyName;
 	NSString *_fontName;
@@ -32,6 +33,7 @@
 }
 @property (nonatomic, readonly) CGFontRef cgFont;
 @property (nonatomic, readonly) CGFloat pointSize;
+@property (nonatomic) CGFloat lineSpacing;
 @property (nonatomic, readonly) CGFloat ascender;
 @property (nonatomic, readonly) CGFloat descender;
 @property (nonatomic, readonly) CGFloat leading;

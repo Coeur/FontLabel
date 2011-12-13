@@ -123,6 +123,7 @@
 }
 
 - (void)setZFont:(ZFont *)font {
+	[self->zFont release];
 	self->zFont = [font retain];
 	self->zFont.lineSpacing = self.lineSpacing;
 }

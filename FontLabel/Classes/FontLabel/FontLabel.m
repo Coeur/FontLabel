@@ -39,51 +39,57 @@
 
 - (id)initWithLabel:(UILabel *)label
 {
-    self = [self initWithFrame:[label frame] zFont:[ZFont fontWithUIFont:label.font]];
-    
-    self.userInteractionEnabled = label.userInteractionEnabled;
-    self.tag = label.tag;
-    //self.frame = label.frame;
-    //self.bounds = label.bounds;
-    //self.center = label.center;
-    self.transform = label.transform;
+    if ((self = [self initWithFrame:label.frame zFont:[ZFont fontWithUIFont:label.font]])) {
+        self.userInteractionEnabled = label.userInteractionEnabled;
+        self.tag = label.tag;
+        self.transform = label.transform;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
-    self.contentScaleFactor = label.contentScaleFactor;
+        self.contentScaleFactor = label.contentScaleFactor;
+#else
+        if ([label respondsToSelector:@selector(contentScaleFactor)]) {
+            self.contentScaleFactor = label.contentScaleFactor;
+        }
 #endif
-    self.multipleTouchEnabled = label.multipleTouchEnabled;
-    self.exclusiveTouch = label.exclusiveTouch;
-    self.autoresizesSubviews = label.autoresizesSubviews;
-    self.autoresizingMask = label.autoresizingMask;
-    self.clipsToBounds = label.clipsToBounds;
-    self.backgroundColor = label.backgroundColor;
-    self.alpha = label.alpha;
-    self.opaque = label.opaque;
-    self.clearsContextBeforeDrawing = label.clearsContextBeforeDrawing;
-    self.hidden = label.hidden;
-    self.contentMode = label.contentMode;
+        self.multipleTouchEnabled = label.multipleTouchEnabled;
+        self.exclusiveTouch = label.exclusiveTouch;
+        self.autoresizesSubviews = label.autoresizesSubviews;
+        self.autoresizingMask = label.autoresizingMask;
+        self.clipsToBounds = label.clipsToBounds;
+        self.backgroundColor = label.backgroundColor;
+        self.alpha = label.alpha;
+        self.opaque = label.opaque;
+        self.clearsContextBeforeDrawing = label.clearsContextBeforeDrawing;
+        self.hidden = label.hidden;
+        self.contentMode = label.contentMode;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_0
-    self.contentStretch = label.contentStretch;
+        self.contentStretch = label.contentStretch;
+#else
+        if ([label respondsToSelector:@selector(contentStretch)]) {
+            self.contentStretch = label.contentStretch;
+        }
 #endif
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_3_2
-    self.gestureRecognizers = label.gestureRecognizers;
+        self.gestureRecognizers = label.gestureRecognizers;
+#else
+        if ([label respondsToSelector:@selector(gestureRecognizers)]) {
+            self.gestureRecognizers = label.gestureRecognizers;
+        }
 #endif
-    
-    self.text = label.text;
-    //self.font = label.font;
-    self.textColor = label.textColor;
-    self.shadowColor = label.shadowColor;
-    self.shadowOffset = label.shadowOffset;
-    self.textAlignment = label.textAlignment;
-    self.lineBreakMode = label.lineBreakMode;
-    self.highlightedTextColor = label.highlightedTextColor;
-    self.highlighted = label.highlighted;
-    self.userInteractionEnabled = label.userInteractionEnabled;
-    self.enabled = label.enabled;
-    self.numberOfLines = label.numberOfLines;
-    self.adjustsFontSizeToFitWidth = label.adjustsFontSizeToFitWidth;
-    self.minimumFontSize = label.minimumFontSize;
-    self.baselineAdjustment = label.baselineAdjustment;
-
+        self.text = label.text;
+        self.textColor = label.textColor;
+        self.shadowColor = label.shadowColor;
+        self.shadowOffset = label.shadowOffset;
+        self.textAlignment = label.textAlignment;
+        self.lineBreakMode = label.lineBreakMode;
+        self.highlightedTextColor = label.highlightedTextColor;
+        self.highlighted = label.highlighted;
+        self.userInteractionEnabled = label.userInteractionEnabled;
+        self.enabled = label.enabled;
+        self.numberOfLines = label.numberOfLines;
+        self.adjustsFontSizeToFitWidth = label.adjustsFontSizeToFitWidth;
+        self.minimumFontSize = label.minimumFontSize;
+        self.baselineAdjustment = label.baselineAdjustment;
+    }
     return self;
 }
 
